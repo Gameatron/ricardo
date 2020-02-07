@@ -9,7 +9,7 @@ with open("info.json", 'r') as f:
     leaders = json.load(f)["leaders"]
 
 dotenv.load_dotenv()
-token, inv, koda = os.environ.get('TOKEN'), os.environ.get('INVITE'), os.environ.get("KODA")
+token, inv, koda = os.environ.get('TOKEN'), os.environ.get('INVITE'), 641865425897914368
 bot = commands.Bot(command_prefix=">", description="Ricardo Bot")
 # List of cogs
 cogs = []
@@ -45,7 +45,7 @@ async def unload(ctx, cog):
 
 @bot.command()
 async def invite(ctx):
-    if ctx.author.id in leaders:
+    if ctx.author.id == koda:
         await ctx.message.delete()
         await ctx.author.send(inv)
     else:
