@@ -45,7 +45,7 @@ async def unload(ctx, cog):
 
 @bot.command()
 async def invite(ctx):
-    if ctx.author.id == koda:
+    if ctx.author.id in leaders:
         await ctx.message.delete()
         await ctx.author.send(inv)
     else:
