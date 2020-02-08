@@ -12,7 +12,7 @@ dotenv.load_dotenv()
 token, inv, koda = os.environ.get('TOKEN'), os.environ.get('INVITE'), 641865425897914368
 bot = commands.Bot(command_prefix=">", description="Ricardo Bot")
 # List of cogs
-cogs = []
+cogs = ["help", "config", "fun", "error", "events"]
 
 bot.remove_command('help')
 
