@@ -21,7 +21,7 @@ class Config(commands.Cog):
     async def config(self, ctx):
         await ctx.message.delete()
         c.execute(f"SELECT * FROM conf WHERE id = {ctx.guild.id}")
-        conf = Conf(c.fetchall()[0])
+        conf = Conf(c.fetchall())
         await ctx.send(embed=conf.embed(ctx, self.bot))
 
     @commands.command()

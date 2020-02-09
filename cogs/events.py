@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord.utils import get
 from conf import Conf
-from random import random
+from random import choice
 import os.path
 import sys
 import psycopg2
@@ -18,8 +18,9 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.lower().contains("i love you"):
-            await message.channl.send("I love you too.")
+        if message.author.id != 674372235166744613:
+            if "i love you" in message.content.lower():
+                await message.channel.send("I love you too.")
 
     @commands.Cog.listener()
     async def on_member_join(self, ctx):
@@ -30,7 +31,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        channel = random(guild.channels)
+        channel = choice(guild.text_channels)
         await channel.send("Thank you for inviting me to your server! I will server you well.\nMy prefix is `>`.")
         c.execute("SELECT id FROM conf")
         e = c.fetchall()
@@ -38,7 +39,7 @@ class Events(commands.Cog):
         for row in e:
             l.append(row[0])
         if not guild.id in l:
-            c.execute(f"INSERT INTO conf VALUES({guild.id}, 1234, 'abc')")
+            c.execute(f"INSERT INTO conf VALUES({guild.id}, 1234, 'abc', 1234)")
         conn.commit()
 
 

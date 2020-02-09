@@ -14,6 +14,7 @@ class Conf:
         self.id = self.conf[0]
         self.welcomechannel = self.conf[1]
         self.welcomemessage = self.conf[2]
+        self.joinrole = self.conf[3]
 
     def check(self, a):
         if a == 1234 or a == "abc":
@@ -25,6 +26,7 @@ class Conf:
         em.add_field(name="Guild Name/ID", value=f"{get(bot.guilds, id=self.id).name} / {self.id}", inline=False)
         em.add_field(name="welcomechannel", value=self.check(self.welcomechannel), inline=False)
         em.add_field(name="welcomemessage", value=self.check(self.welcomemessage), inline=False)
+        em.add_field(name="joinrole", value=self.check(self.joinrole), inline=False)
         return em
 
     def __str__(self):
